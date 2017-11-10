@@ -1,0 +1,53 @@
+
+html
+    head
+        script(src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js")
+        script(src="../javascripts/edit_delete.js")
+
+        body
+            block content
+                form(class="form" name="sample_form", method="post" action="/users/insert")
+                    div.input
+                        input(name='_id',id="id",type="hidden")
+                    div.input
+                        span.label Name
+                        input(type="text", name="name", id="name")
+                    div.input
+                        span.label Age
+                        input(type="text", name="age", id="age")
+                    div.actions
+                        input(type="submit", value="add", class="add" )
+                
+                
+                - var x='#{data.length}';
+                - var y='#{data}'
+                span #{data.length}
+                span #{x}
+
+                table(border='1')
+                    thead
+                        tr
+                            th Id
+                            th Name
+                            th Age
+                            th Edit/Delete
+                    tbody
+                        each element in data
+                            tr
+                                td #{element._id}
+                                td #{element.name}
+                                td #{element.age}
+                                td 
+                                    
+                                        input( data='#{element._id}', type="button", value="Edit", class="edit" onclick="EDIT(this)")
+                                        
+                                        input( data='#{element._id}', type="button", value="Delete", class="delete" onclick="del(this)")
+                                    
+
+
+
+
+
+           
+
+
